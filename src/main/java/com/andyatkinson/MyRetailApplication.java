@@ -1,8 +1,13 @@
 package com.andyatkinson;
 
+import com.andyatkinson.jdbi.dao.ProductDAO;
+import com.andyatkinson.resources.ProductsResource;
 import io.dropwizard.Application;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
 
 public class MyRetailApplication extends Application<MyRetailConfiguration> {
 
@@ -17,13 +22,22 @@ public class MyRetailApplication extends Application<MyRetailConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<MyRetailConfiguration> bootstrap) {
-        // TODO: application initialization
     }
 
     @Override
     public void run(final MyRetailConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+
+        //create database connection
+        final DBIFactory factory = new DBIFactory();
+        final DataSourceFactory dataSourceFactory = configuration.getDataSourceFactory();
+        final DBI jdbi = factory.build(environment, dataSourceFactory, "postgresql");
+
+        //add resources
+        final ProductDAO productDAO = jdbi.onDemand(ProductDAO.class);
+
+        final ProductsResource productsResource = new ProductsResource(productDAO);
+        environment.jersey().register(productsResource);
     }
 
 }

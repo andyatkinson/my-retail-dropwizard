@@ -1,3 +1,15 @@
+database:
+  driverClass: org.postgresql.Driver
+  user: andy
+  password:
+  url: jdbc:postgresql://localhost/my_retail_dropwizard
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+
 logging:
   level: INFO
   loggers:
