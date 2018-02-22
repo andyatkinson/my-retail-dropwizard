@@ -22,10 +22,10 @@ public class ProductsResource {
     }
 
     @GET
-    @Path("/{id}")
-    public Response getProduct(@PathParam("id") Integer id) {
+    @Path("/{external_id}")
+    public Response getProduct(@PathParam("external_id") Integer externalId) {
 
-        final Product product = this.productDAO.findById(id);
+        final Product product = this.productDAO.findByExternalId(externalId);
 
         return Response.ok().
                 type(MediaType.APPLICATION_JSON_TYPE).

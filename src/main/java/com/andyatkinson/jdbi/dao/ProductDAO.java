@@ -10,6 +10,6 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 @RegisterMapper(ProductMapper.class)
 public interface ProductDAO {
 
-    @SqlQuery("SELECT * FROM products where id = :id")
-    Product findById(@Bind("id") Integer id);
+    @SqlQuery("SELECT * FROM products where external_id = :externalId")
+    Product findByExternalId(@Bind("externalId") Integer externalId);
 }

@@ -2,6 +2,7 @@ package com.andyatkinson;
 
 import com.andyatkinson.jdbi.dao.ProductDAO;
 import com.andyatkinson.resources.ProductsResource;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;

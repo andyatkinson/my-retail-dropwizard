@@ -47,10 +47,10 @@ CREATE INDEX index_products_on_external_id ON products USING btree (external_id)
 
 
 
- - Insert some product records
+ - Insert some product records, with price details
  
 ```sql
-insert into products (id,external_id) VALUES (1, 15117729);
+insert into products (id,external_id,price_details) VALUES (1, 15117729, '{"value": 13.49, "currency_code": "USD"}');
 insert into products (id,external_id) VALUES (2, 16483589);
 insert into products (id,external_id) VALUES (3, 16696652);
 insert into products (id,external_id) VALUES (4, 16752456);
