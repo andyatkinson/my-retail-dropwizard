@@ -70,3 +70,20 @@ curl -X GET \
 ### JSON HTTP requests and JSON parsing 
 
 Added dependencies Unirest and JsonPath to make it easier to load and parse JSON, and drill into deeply nested structures.
+
+### Benchmarking
+
+Benchmarking with wrk
+
+```
+$ wrk -t1 -c10 -d10s http://127.0.0.1:8080/products/15117729
+Running 10s test @ http://127.0.0.1:8080/products/15117729
+  1 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   273.07ms  368.96ms   1.97s    85.54%
+    Req/Sec    73.00     52.65   191.00     56.10%
+  621 requests in 10.06s, 143.73KB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:     61.73
+Transfer/sec:     14.29KB
+```
