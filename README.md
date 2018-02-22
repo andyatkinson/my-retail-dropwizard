@@ -63,6 +63,10 @@ insert into products (id,external_id) VALUES (6, 13860428);
 
 ```
 curl -X GET \
-  http://localhost:8080/products/1 \
+  http://localhost:8080/products/15117729 \
   -H 'content-type: application/json'
 ```
+
+### JSON HTTP requests and JSON parsing 
+
+Added dependencies Unirest and JsonPath to make it easier to load and parse JSON, and drill into deeply nested structures.

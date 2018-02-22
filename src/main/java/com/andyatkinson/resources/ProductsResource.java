@@ -1,5 +1,7 @@
 package com.andyatkinson.resources;
 
+import com.andyatkinson.client.RedSkyClient;
+import com.andyatkinson.client.RedSkyProduct;
 import com.andyatkinson.core.Product;
 import com.andyatkinson.jdbi.dao.ProductDAO;
 
@@ -25,7 +27,11 @@ public class ProductsResource {
     @Path("/{external_id}")
     public Response getProduct(@PathParam("external_id") Integer externalId) {
 
-        final Product product = this.productDAO.findByExternalId(externalId);
+
+        RedSkyProduct redSkyProduct = new RedSkyClient().getRedSkyProduct();
+
+        Product product = this.productDAO.findByExternalId(externalId);
+        product.setName(redSkyProduct.getTitle());
 
         return Response.ok().
                 type(MediaType.APPLICATION_JSON_TYPE).
