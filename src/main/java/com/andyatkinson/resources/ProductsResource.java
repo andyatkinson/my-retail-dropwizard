@@ -27,7 +27,6 @@ public class ProductsResource {
     @Path("/{external_id}")
     public Response getProduct(@PathParam("external_id") Integer externalId) {
 
-
         RedSkyProduct redSkyProduct = new RedSkyClient().getRedSkyProduct();
 
         Product product = this.productDAO.findByExternalId(externalId);

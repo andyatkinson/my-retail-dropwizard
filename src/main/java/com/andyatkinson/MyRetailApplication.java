@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
@@ -23,6 +24,13 @@ public class MyRetailApplication extends Application<MyRetailConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<MyRetailConfiguration> bootstrap) {
+
+        bootstrap.addBundle(new MigrationsBundle<MyRetailConfiguration>() {
+            @Override
+            public DataSourceFactory getDataSourceFactory(MyRetailConfiguration configuration) {
+                return configuration.getDataSourceFactory();
+            }
+        });
     }
 
     @Override

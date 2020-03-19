@@ -8,8 +8,7 @@
 1. Visit `http://localhost:8080/products/1` (see curl example below)
 
 
-
-## Local DB setup
+## Local DB setup, manual creation
 
  - `create database my_retail_dropwizard;`
  - Create products table
@@ -58,8 +57,17 @@ insert into products (id,external_id) VALUES (5, 15643793);
 insert into products (id,external_id) VALUES (6, 13860428);
 ```
 
+## DB setup with Liquibase
 
-### Curl examples
+Check the database status
+
+```
+$ java -jar target/my-retail-dropwizard-1.0-SNAPSHOT.jar db status config.yml
+1 change sets have not been applied to andy@jdbc:postgresql://localhost/my_retail_dropwizard
+```
+
+
+## Curl examples
 
 ```
 curl -X GET \
