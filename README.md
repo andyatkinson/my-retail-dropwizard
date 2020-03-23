@@ -7,6 +7,10 @@
 1. `java -jar target/my-retail-dropwizard-1.0-SNAPSHOT.jar server config.yml`
 1. Visit `http://localhost:8080/products/1` (see curl example below)
 
+## Running Tests
+
+`mvn test`
+
 
 ## Local DB setup, manual creation
 

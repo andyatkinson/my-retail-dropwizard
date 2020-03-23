@@ -12,7 +12,6 @@ import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
 public class MyRetailApplication extends Application<MyRetailConfiguration> {
-
     public static void main(final String[] args) throws Exception {
         new MyRetailApplication().run(args);
     }
@@ -48,5 +47,4 @@ public class MyRetailApplication extends Application<MyRetailConfiguration> {
         final ProductsResource productsResource = new ProductsResource(productDAO);
         environment.jersey().register(productsResource);
     }
-
 }

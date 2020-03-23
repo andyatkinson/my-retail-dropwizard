@@ -2,15 +2,15 @@ package com.andyatkinson.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Product {
     private Integer id;
     private Integer externalId;
-    private HashMap priceDetails;
-    private String name;
+    private Map     priceDetails;
+    private String  name;
 
-    public Product(Integer id, Integer externalId, HashMap priceDetails) {
+    public Product(final Integer id, final Integer externalId, final Map priceDetails) {
         this.id = id;
         this.externalId = externalId;
         this.priceDetails = priceDetails;
@@ -26,8 +26,8 @@ public class Product {
     }
 
     @JsonProperty("current_price")
-    public HashMap getPriceDetails() {
-        return priceDetails;
+    public Map getPriceDetails() {
+      return this.priceDetails;
     }
 
     @JsonProperty
@@ -35,7 +35,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 }
